@@ -6,5 +6,13 @@ export default class RouteCreator {
     this.backendAddress = backendAddress 
     this.defaultFailurePage = defaultFailurePage 
   }
+
+  createRoute(givenPath, givenElement) {
+    return {
+      path: givenPath,
+      element: givenElement
+    }
+  }
+
 }
 
