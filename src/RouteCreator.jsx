@@ -13,6 +13,23 @@ export default class RouteCreator {
       element: givenElement
     }
   }
+  
+  createProtectedRoute(
+    givenPath, 
+    successChild, 
+    failureChild
+  ) {
+    if (failureChild === undefined) {
+      failureChild = this.defaultFailurePage
+    }
+    return this.createRoute(
+      givenPath, <ProtectedRoute 
+                  backendUrl={this.backendAddress + givenPath}
+                  successChild={successChild}
+                  failureChild={failureChild}/>
+    )
+  }
+
 
 }
 
