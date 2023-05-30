@@ -2,7 +2,7 @@ import { AppBar } from '@mui/material'
 
 
 
-export default function SimpleAppBar() {
+export default function SimpleAppBar({text}) {
     return (
       <AppBar 
       sx={{
@@ -11,7 +11,7 @@ export default function SimpleAppBar() {
       mb: 1}}>
           <Toolbar style={{ justifyContent: 'center' }}>
               <Typography variant='h1'>
-                  ProMan
+                  {text}
               </Typography>
           </Toolbar>
       </AppBar>
