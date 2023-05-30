@@ -41,3 +41,31 @@ export async function makeRequestWithBody(address, token, withBody, method) {
 export async function putWithBody(address, token, withBody) {
   return await makeRequestWithBody(address, token, withBody, 'PUT');
 }
+
+
+export async function postJson(address, withBody) {
+  const response = await post(address, withBody);
+  return await response.json();
+}
+
+
+
+export async function deleteRequest(address, token) {
+  return await makeRequest(address, token, 'DELETE');
+}
+
+export async function getJson(address, token) {
+  const response = await get(address, token);
+  return await response.json();
+}
+
+
+export async function deleteJson(address, token) {
+  const response = await deleteRequest(address, token);
+  return await response.json();
+}
+
+export async function putWithBodyJson(address, token, withBody) {
+  const response = await putWithBody(address, token, withBody)
+  return await response.json();
+}
