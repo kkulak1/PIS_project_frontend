@@ -11,8 +11,7 @@ import {
   CentredButtonGrid
 } from  '../utils/placementutils';
 import { buttonColorStyle } from "../theme"
-import { backendAddress, logIn } from "../utils/pathutils"
-import * as restutils from "../utils/restutils"
+import {  }  from "./operations"
 
 const LogInPage = () => {
   let navigate = useNavigate()
@@ -21,26 +20,12 @@ const LogInPage = () => {
   let [token, setToken] = useToken();
 
   async function handleLogInButtonClick() {
-    console.log('Trying to log in');
     let responseJson = await postLoginData(email, password);
-    // removeCookie('JWT_token');
     handleLogInResponse(responseJson);
   }
 
   function pickOverviewPath(role) {
     return `/${role}_home/overview`
-  }
-
-  async function postLoginData(email, password) {
-    const responseJson = await restutils.postJson(
-      backendAddress + logIn,
-      JSON.stringify({
-        'username': email,
-        'password': password
-      })
-    )
-    return responseJson;
-    // TODO
   }
 
   function handleLogInResponse(responseJson) {
@@ -77,7 +62,7 @@ const LogInPage = () => {
 
   return (
     <Container>
-      <SimpleAppBar/>
+      <SimpleAppBar text="Książeczki książki" />
       <Toolbar/>
       <Box>                           
         <Grid
