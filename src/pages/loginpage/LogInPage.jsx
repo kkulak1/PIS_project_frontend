@@ -10,6 +10,8 @@ import useToken from '../../hooks/useToken';
 //   CenteredFormLabelGrid,
 //   CentredButtonGrid
 // } from  '../../utils/placementutils';
+import CentredTextFieldGrid from '../../components/CentredTextFieldGrid'
+import CentredPasswordFieldGrid from '../../components/CentredPasswordFieldGrid'
 import SimpleAppBar from '../../components/SimpleAppBar';
 import { pickOverviewPath } from '../../utils/pathutils';
 import { buttonColorStyle } from "../../theme"
@@ -17,12 +19,12 @@ import { postLoginData, logFailure, logSuccess }  from "./operations"
 
 const LogInPage = () => {
   let navigate = useNavigate()
-  const [email, setEmail] = useState('');
+  const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   let [token, setToken] = useToken();
 
   async function handleLogInButtonClick() {
-    let responseJson = await postLoginData(email, password);
+    let responseJson = await postLoginData(login, password);
     handleLogInResponse(responseJson);
   }
 
@@ -41,8 +43,8 @@ const LogInPage = () => {
     navigate(url);
   }
 
-  function handleEmailTextFieldChange(event) {
-    setEmail(event.target.value);
+  function handleLoginTextFieldChange(event) {
+    setLogin(event.target.value);
   }
 
   function handlePasswordTextFieldChange(event) {
@@ -56,12 +58,12 @@ const LogInPage = () => {
       <Box>                           
         <Grid
         container
-        spacing={2}>
-          {/* {CentredTextFieldGrid("Username", email, handleEmailTextFieldChange)}
-          {CentredPasswordFieldGrid(password, handlePasswordTextFieldChange)}
-          {CentredButtonGrid(buttonColorStyle, handleLogInButtonClick, "Log in")}
-          {CenteredFormLabelGrid("Not a member yet?")}
-          {CenteredFormLabelGrid("Contact us at proman@gmail.com to sign up!")} */}
+        spacing={1}>
+          <CentredTextFieldGrid label={"Login"} value={login} onChange={handleLoginTextFieldChange}/>
+          <CentredPasswordFieldGrid value={password} onChange={handlePasswordTextFieldChange}/>
+          {/* {CentredButtonGrid(buttonColorStyle, handleLogInButtonClick, "Log in")} */}
+          {/* {CenteredFormLabelGrid("Not a member yet?")} */}
+          {/* {CenteredFormLabelGrid("Contact us at proman@gmail.com to sign up!")} */}
         </Grid> 
       </Box>
     </Container>
