@@ -2,16 +2,18 @@ import { useNavigate } from 'react-router-dom'
 import { Container } from '@mui/system';
 import { Box, Grid, Toolbar } from '@mui/material';
 import { useState } from 'react';
-import useToken from '../hooks/useToken';
-import { 
-  SimpleAppBar, 
-  CentredTextFieldGrid,
-  CentredPasswordFieldGrid,
-  CenteredFormLabelGrid,
-  CentredButtonGrid
-} from  '../utils/placementutils';
-import { buttonColorStyle } from "../theme"
-import {  }  from "./operations"
+import useToken from '../../hooks/useToken';
+// import { 
+//   SimpleAppBar, 
+//   CentredTextFieldGrid,
+//   CentredPasswordFieldGrid,
+//   CenteredFormLabelGrid,
+//   CentredButtonGrid
+// } from  '../../utils/placementutils';
+import SimpleAppBar from '../../components/SimpleAppBar';
+import { pickOverviewPath } from '../../utils/pathutils';
+import { buttonColorStyle } from "../../theme"
+import { postLoginData, logFailure, logSuccess }  from "./operations"
 
 const LogInPage = () => {
   let navigate = useNavigate()
@@ -22,10 +24,6 @@ const LogInPage = () => {
   async function handleLogInButtonClick() {
     let responseJson = await postLoginData(email, password);
     handleLogInResponse(responseJson);
-  }
-
-  function pickOverviewPath(role) {
-    return `/${role}_home/overview`
   }
 
   function handleLogInResponse(responseJson) {
@@ -41,15 +39,6 @@ const LogInPage = () => {
     setToken(responseJson.token);
     let url = pickOverviewPath(responseJson.role);
     navigate(url);
-  }
-
-  function logSuccess(responseJson) {
-    console.log('Logged in');
-    console.log('Role: ' + responseJson.role);
-  }
-
-  function logFailure() {
-    console.log('Failed to log in');
   }
 
   function handleEmailTextFieldChange(event) {
@@ -68,11 +57,11 @@ const LogInPage = () => {
         <Grid
         container
         spacing={2}>
-          {CentredTextFieldGrid("Username", email, handleEmailTextFieldChange)}
+          {/* {CentredTextFieldGrid("Username", email, handleEmailTextFieldChange)}
           {CentredPasswordFieldGrid(password, handlePasswordTextFieldChange)}
           {CentredButtonGrid(buttonColorStyle, handleLogInButtonClick, "Log in")}
           {CenteredFormLabelGrid("Not a member yet?")}
-          {CenteredFormLabelGrid("Contact us at proman@gmail.com to sign up!")}
+          {CenteredFormLabelGrid("Contact us at proman@gmail.com to sign up!")} */}
         </Grid> 
       </Box>
     </Container>

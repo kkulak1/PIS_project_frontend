@@ -12,3 +12,14 @@ const responseJson = await restutils.postJson(
 )
 return responseJson;
 }
+
+
+export function logSuccess(responseJson) {
+  console.log('Logged in');
+  console.log('Role: ' + responseJson.role);
+}
+
+export function logFailure() {
+  console.log('Failed to log in');
+}
+

@@ -1,4 +1,4 @@
-import ProtectedRoute from './components/ProtectedRoute'
+import ProtectedRoute from './components/routing/ProtectedRoute'
 
 
 export default class RouteCreator {

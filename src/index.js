@@ -12,7 +12,7 @@ import {
 import { theme } from './theme'
 
 
-import LogInPage from './pages/LogInPage';
+import LogInPage from './pages/loginpage/LogInPage';
 
 
 let routeCreator = new RouteCreator(

@@ -1,8 +1,8 @@
-import useToken from "../hooks/useToken";
+import useToken from "../../hooks/useToken";
 import { useEffect, useState } from "react";
-import MyContext from '../contexts/MyContext';
+import MyContext from '../../contexts/MyContext';
 import { useLocation } from "react-router-dom";
-import * as restutils from "../utils/restutils" 
+import * as restutils from "../../utils/restutils" 
 
 export default function ProtectedRoute({ backendUrl, successChild, failureChild }) {
   let [token, setToken] = useToken();
