@@ -50,7 +50,7 @@ const LogInPage = () => {
 
   return (
     <Container>
-      <SimpleAppBar text="Książeczki książki" />
+      <SimpleAppBar text="Przepisy" />
       <Toolbar/>
       <Box>                           
         <Grid
