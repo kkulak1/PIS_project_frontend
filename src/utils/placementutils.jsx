@@ -60,7 +60,7 @@ export function placeButton(styleExtended, onClick, text) {
 }
 
 export function CentredButtonGrid(
-  buttonStyle, onClick, buttonText, xs=12
+  {buttonStyle, onClick, buttonText, xs=12}
 ) {
   return (
     <Grid item xs={xs}>
@@ -71,7 +71,7 @@ export function CentredButtonGrid(
   )
 }
 
-export function CenteredFormLabelGrid(label, xs=12) {
+export function CenteredFormLabelGrid({label, xs=12}) {
   return (
     <Grid item xs={xs}>
       <CenteringGrid>

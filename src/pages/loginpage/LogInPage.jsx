@@ -48,6 +48,10 @@ const LogInPage = () => {
     setPassword(event.target.value);
   }
 
+  function handleRegisterButtonClick() {
+    navigate("/register")
+  }
+
   return (
     <Container>
       <SimpleAppBar text="Przepisy" />
@@ -58,9 +62,10 @@ const LogInPage = () => {
         spacing={1}>
           <CentredTextFieldGrid label={"Login"} value={login} onChange={handleLoginTextFieldChange}/>
           <CentredPasswordFieldGrid value={password} onChange={handlePasswordTextFieldChange}/>
-          {CentredButtonGrid(buttonColorStyle, handleLogInButtonClick, "Log in")}
-          {CenteredFormLabelGrid("Not a member yet?")}
-          {CenteredFormLabelGrid("Contact us at epic@weiti.pl.com to sign up!")}
+          <CentredButtonGrid buttonStyle={buttonColorStyle} onClick={handleLogInButtonClick} label="Log in"/>
+          <CenteredFormLabelGrid label="Not a member yet?"/>
+          <CentredButtonGrid buttonStyle={buttonColorStyle} onClick={handleRegisterButtonClick} label="Sign up"/>
+          <CenteredFormLabelGrid label="Contact us at epic@weiti.pl.com to sign up!"/>
         </Grid> 
       </Box>
     </Container>
