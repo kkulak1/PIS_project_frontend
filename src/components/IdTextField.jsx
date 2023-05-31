@@ -1,7 +1,7 @@
 import { TextField } from "@mui/material"
 
 
-export function IdTextField(label, value, onChange, type="text", id=null) {
+export default function IdTextField(label, value, onChange, type="text", id=null) {
   id = id ?? `${label.toLowerCase()}-text-field`
   return (
   <TextField 
