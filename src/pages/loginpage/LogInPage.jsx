@@ -3,13 +3,10 @@ import { Container } from '@mui/system';
 import { Box, Grid, Toolbar } from '@mui/material';
 import { useState } from 'react';
 import useToken from '../../hooks/useToken';
-// import { 
-//   SimpleAppBar, 
-//   CentredTextFieldGrid,
-//   CentredPasswordFieldGrid,
-//   CenteredFormLabelGrid,
-//   CentredButtonGrid
-// } from  '../../utils/placementutils';
+import { 
+  CenteredFormLabelGrid,
+  CentredButtonGrid
+} from  '../../utils/placementutils';
 import CentredTextFieldGrid from '../../components/CentredTextFieldGrid'
 import CentredPasswordFieldGrid from '../../components/CentredPasswordFieldGrid'
 import SimpleAppBar from '../../components/SimpleAppBar';
@@ -61,9 +58,9 @@ const LogInPage = () => {
         spacing={1}>
           <CentredTextFieldGrid label={"Login"} value={login} onChange={handleLoginTextFieldChange}/>
           <CentredPasswordFieldGrid value={password} onChange={handlePasswordTextFieldChange}/>
-          {/* {CentredButtonGrid(buttonColorStyle, handleLogInButtonClick, "Log in")} */}
-          {/* {CenteredFormLabelGrid("Not a member yet?")} */}
-          {/* {CenteredFormLabelGrid("Contact us at proman@gmail.com to sign up!")} */}
+          {CentredButtonGrid(buttonColorStyle, handleLogInButtonClick, "Log in")}
+          {CenteredFormLabelGrid("Not a member yet?")}
+          {CenteredFormLabelGrid("Contact us at epic@weiti.pl.com to sign up!")}
         </Grid> 
       </Box>
     </Container>
