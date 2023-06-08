@@ -60,7 +60,7 @@ const LogInPage = () => {
         <Grid
         container
         spacing={1}>
-          <CentredTextFieldGrid label={"Login"} value={login} onChange={handleLoginTextFieldChange}/>
+          <CentredTextFieldGrid label={"Email"} value={login} onChange={handleLoginTextFieldChange}/>
           <CentredPasswordFieldGrid value={password} onChange={handlePasswordTextFieldChange}/>
           <CentredButtonGrid buttonStyle={buttonColorStyle} onClick={handleLogInButtonClick} buttonText="Log in"/>
           <CenteredFormLabelGrid label="Not a member yet?"/>
