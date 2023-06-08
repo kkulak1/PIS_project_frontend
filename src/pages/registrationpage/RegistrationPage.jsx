@@ -10,20 +10,18 @@ import {
 import CentredTextFieldGrid from '../../components/CentredTextFieldGrid'
 import CentredPasswordFieldGrid from '../../components/CentredPasswordFieldGrid'
 import SimpleAppBar from '../../components/SimpleAppBar';
-import { pickOverviewPath } from '../../utils/pathutils';
+import { logIn, pickOverviewPath } from '../../utils/pathutils';
 import { buttonColorStyle } from "../../theme"
 import { postLoginData, logFailure, logSuccess }  from "./operations"
 
 const RegistrationPage = () => {
   let navigate = useNavigate()
-  const [login, setLogin] = useState('');
+  const [email, setEmail] = useState('');
+  const [name, setName ] = useState('');
+  const [surname, setSurname] = useState('');
   const [password, setPassword] = useState('');
+  const [repeatedPassword, setRepeatedPassword] = useState('');
   let [token, setToken] = useToken();
-
-  async function handleLogInButtonClick() {
-    let responseJson = await postLoginData(login, password);
-    handleLogInResponse(responseJson);
-  }
 
   function handleLogInResponse(responseJson) {
     if (responseJson.status === 'success') {
@@ -41,16 +39,42 @@ const RegistrationPage = () => {
   }
 
   function handleLoginTextFieldChange(event) {
-    setLogin(event.target.value);
+    setEmail(event.target.value);
+  }
+
+  async function handleRegisterButtonClick(login, password) {
+    let responseJson = await postLoginData(login, password);
+    handleLogInResponse(responseJson);
+  }
+
+  function handleLogInButtonClick() {
+    navigate(logIn);
+  }
+
+
+  function handleEmailTextFieldChange(event) {
+    setEmail(event.target.value);
+  }
+
+
+  function handleNameTextFieldChange(event) {
+    setName(event.target.value);
+  }
+
+
+  function handleSurnameTextFieldChange(event) {
+    setSurname(event.target.value);
   }
 
   function handlePasswordTextFieldChange(event) {
     setPassword(event.target.value);
   }
 
-  function handleRegisterButtonClick() {
-    navigate("/register")
+  function handleRepeatedPasswordTextFieldChange(event) {
+    setPassword(event.target.value);
   }
+
+
 
   return (
     <Container>
@@ -60,11 +84,18 @@ const RegistrationPage = () => {
         <Grid
         container
         spacing={1}>
-          <CentredTextFieldGrid label={"Login"} value={login} onChange={handleLoginTextFieldChange}/>
+          <CentredTextFieldGrid label={"Email"} value={email} onChange={handleEmailTextFieldChange}/>
+          <CentredTextFieldGrid label={"Name"} value={name} onChange={handleNameTextFieldChange}/>
+          <CentredTextFieldGrid label={"Surname"} value={surname} onChange={handleSurnameTextFieldChange}/>
           <CentredPasswordFieldGrid value={password} onChange={handlePasswordTextFieldChange}/>
-          <CentredButtonGrid buttonStyle={buttonColorStyle} onClick={handleLogInButtonClick} buttonText="Log in"/>
-          <CenteredFormLabelGrid label="Not a member yet?"/>
+          <CentredPasswordFieldGrid 
+            value={repeatedPassword} 
+            onChange={handleRepeatedPasswordTextFieldChange} 
+            label='Repeated password'
+          />
           <CentredButtonGrid buttonStyle={buttonColorStyle} onClick={handleRegisterButtonClick} buttonText="Sign up"/>
+          <CenteredFormLabelGrid label="Already a member?"/>
+          <CentredButtonGrid buttonStyle={buttonColorStyle} onClick={handleLogInButtonClick} buttonText="Log in"/>
         </Grid> 
       </Box>
     </Container>
