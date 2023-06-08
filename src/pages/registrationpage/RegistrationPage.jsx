@@ -12,7 +12,7 @@ import CentredPasswordFieldGrid from '../../components/CentredPasswordFieldGrid'
 import SimpleAppBar from '../../components/SimpleAppBar';
 import { logIn, pickOverviewPath } from '../../utils/pathutils';
 import { buttonColorStyle } from "../../theme"
-import { postLoginData, logFailure, logSuccess }  from "./operations"
+import { postLoginData as postRegisterData, logFailure, logSuccess }  from "./operations"
 
 const RegistrationPage = () => {
   let navigate = useNavigate()
@@ -39,8 +39,8 @@ const RegistrationPage = () => {
   }
 
   async function handleRegisterButtonClick(login, password) {
-    let responseJson = await postLoginData(login, password);
-    handleLogInResponse(responseJson);
+    // let responseJson = await postRegisterData(login, password);
+    // handleLogInResponse(responseJson);
   }
 
   function handleLogInButtonClick() {
