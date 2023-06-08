@@ -54,7 +54,7 @@ const LogInPage = () => {
 
   return (
     <Container>
-      <SimpleAppBar text="Przepisy" />
+      <SimpleAppBar text="Cookbook" />
       <Toolbar/>
       <Box>                           
         <Grid
@@ -62,10 +62,9 @@ const LogInPage = () => {
         spacing={1}>
           <CentredTextFieldGrid label={"Login"} value={login} onChange={handleLoginTextFieldChange}/>
           <CentredPasswordFieldGrid value={password} onChange={handlePasswordTextFieldChange}/>
-          <CentredButtonGrid buttonStyle={buttonColorStyle} onClick={handleLogInButtonClick} label="Log in"/>
+          <CentredButtonGrid buttonStyle={buttonColorStyle} onClick={handleLogInButtonClick} buttonText="Log in"/>
           <CenteredFormLabelGrid label="Not a member yet?"/>
-          <CentredButtonGrid buttonStyle={buttonColorStyle} onClick={handleRegisterButtonClick} label="Sign up"/>
-          <CenteredFormLabelGrid label="Contact us at epic@weiti.pl.com to sign up!"/>
+          <CentredButtonGrid buttonStyle={buttonColorStyle} onClick={handleRegisterButtonClick} buttonText="Sign up"/>
         </Grid> 
       </Box>
     </Container>
