@@ -7,12 +7,14 @@ import RouteCreator from './RouteCreator.jsx'
 import { 
   textRoot, 
   logIn, 
-  backendAddress
+  backendAddress,
+  registration
 } from './utils/pathutils'
 import { theme } from './theme'
 
 
 import LogInPage from './pages/loginpage/LogInPage';
+import RegistrationPage from './pages/registrationpage/RegistrationPage';
 
 
 let routeCreator = new RouteCreator(
@@ -31,6 +33,7 @@ const router = createBrowserRouter(
     children: [
       routeCreator.createRoute(textRoot, <Navigate to={logIn}/>),
       routeCreator.createRoute(logIn, <LogInPage/>),
+      routeCreator.createRoute(registration, <RegistrationPage/>),
     ]
   }]
 );
