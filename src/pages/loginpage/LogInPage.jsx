@@ -10,7 +10,7 @@ import {
 import CentredTextFieldGrid from '../../components/CentredTextFieldGrid'
 import CentredPasswordFieldGrid from '../../components/CentredPasswordFieldGrid'
 import SimpleAppBar from '../../components/SimpleAppBar';
-import { pickOverviewPath } from '../../utils/pathutils';
+import { pickOverviewPath, registration } from '../../utils/pathutils';
 import { buttonColorStyle } from "../../theme"
 import { postLoginData, logFailure, logSuccess }  from "./operations"
 
@@ -49,7 +49,7 @@ const LogInPage = () => {
   }
 
   function handleRegisterButtonClick() {
-    navigate("/register")
+    navigate(registration);
   }
 
   return (
