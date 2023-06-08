@@ -14,6 +14,8 @@ import { logIn, pickOverviewPath } from '../../utils/pathutils';
 import { buttonColorStyle } from "../../theme"
 import { postRegisterData, logFailure, logSuccess }  from "./operations"
 
+
+
 const RegistrationPage = () => {
   let navigate = useNavigate()
   const [email, setEmail] = useState('');
