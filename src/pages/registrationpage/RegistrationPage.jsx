@@ -38,10 +38,6 @@ const RegistrationPage = () => {
     navigate(url);
   }
 
-  function handleLoginTextFieldChange(event) {
-    setEmail(event.target.value);
-  }
-
   async function handleRegisterButtonClick(login, password) {
     let responseJson = await postLoginData(login, password);
     handleLogInResponse(responseJson);
