@@ -2,7 +2,7 @@
 import * as restutils from "../../utils/restutils"
 import { backendAddress, logIn } from "../../utils/pathutils"
 
-export async function postLoginData(login, password) {
+export async function postRegisterData(login, password) {
 const responseJson = await restutils.postJson(
     backendAddress + logIn,
     JSON.stringify({

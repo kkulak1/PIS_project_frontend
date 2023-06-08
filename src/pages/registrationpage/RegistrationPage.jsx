@@ -12,7 +12,7 @@ import CentredPasswordFieldGrid from '../../components/CentredPasswordFieldGrid'
 import SimpleAppBar from '../../components/SimpleAppBar';
 import { logIn, pickOverviewPath } from '../../utils/pathutils';
 import { buttonColorStyle } from "../../theme"
-import { postLoginData as postRegisterData, logFailure, logSuccess }  from "./operations"
+import { postRegisterData, logFailure, logSuccess }  from "./operations"
 
 const RegistrationPage = () => {
   let navigate = useNavigate()
