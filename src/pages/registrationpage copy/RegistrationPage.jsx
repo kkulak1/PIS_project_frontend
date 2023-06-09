@@ -7,14 +7,12 @@ import {
   CenteredFormLabelGrid,
   CentredButtonGrid
 } from  '../../utils/placementutils';
-import CentredTextFieldGrid from '../../components/TextFields/CentredTextFieldGrid'
+import CentredTextFieldGrid from '../../components/CentredTextFieldGrid'
 import CentredPasswordFieldGrid from '../../components/TextFields/CentredPasswordFieldGrid'
 import SimpleAppBar from '../../components/SimpleAppBar';
 import { logIn, pickOverviewPath } from '../../utils/pathutils';
 import { buttonColorStyle } from "../../theme"
 import { postRegisterData, logFailure, logSuccess }  from "./operations"
-
-
 
 const RegistrationPage = () => {
   let navigate = useNavigate()

@@ -7,8 +7,8 @@ import {
   CenteredFormLabelGrid,
   CentredButtonGrid
 } from  '../../utils/placementutils';
-import CentredTextFieldGrid from '../../components/CentredTextFieldGrid'
-import CentredPasswordFieldGrid from '../../components/CentredPasswordFieldGrid'
+import CentredTextFieldGrid from '../../components/TextFields/CentredTextFieldGrid'
+import CentredPasswordFieldGrid from '../../components/TextFields/CentredPasswordFieldGrid'
 import SimpleAppBar from '../../components/SimpleAppBar';
 import { pickOverviewPath, registration } from '../../utils/pathutils';
 import { buttonColorStyle } from "../../theme"
