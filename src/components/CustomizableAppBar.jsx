@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import useToken from '../hooks/useToken';
 import {logIn} from '../utils/pathutils'
 import AppBarButton from './buttons/AppBarButton';
+import AppBarLogoutButton from './buttons/AppBarLogoutButton';
+
 
 export default function CustomizableAppBar({ children, buttonsData }) {
   let navigate = useNavigate();
@@ -16,9 +18,9 @@ export default function CustomizableAppBar({ children, buttonsData }) {
     navigate(logIn);
   }
 
-  for (let AppButtonData in buttonsData) {
+  for (let appButtonData of buttonsData) {
     buttons.push(
-      <AppBarButton AppButtonData={AppButtonData}/>
+      <AppBarButton appBarButtonData={appButtonData}/>
     );
   }
   
@@ -39,11 +41,7 @@ export default function CustomizableAppBar({ children, buttonsData }) {
         </Typography>
         {buttons}
         <Box sx={{ flexGrow: 1 }}/>
-        <Button
-        style={{ color: '#ff3300' }}
-        onClick={handleLogOut}>
-          Log out
-        </Button>
+        <AppBarLogoutButton/>
       </Toolbar>
       </AppBar>
       <Toolbar/>
