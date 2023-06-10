@@ -1,100 +1,67 @@
-import { useNavigate } from 'react-router-dom'
-import { Container } from '@mui/system';
-import { Box, Grid, Toolbar } from '@mui/material';
-import { useState } from 'react';
-import useToken from '../../hooks/useToken';
-import { 
-  CenteredFormLabelGrid,
-  CentredButtonGrid
-} from  '../../utils/placementutils';
-import CentredTextFieldGrid from '../../components/CentredTextFieldGrid'
-import CentredPasswordFieldGrid from '../../components/CentredPasswordFieldGrid'
-import SimpleAppBar from '../../components/SimpleAppBar';
-import { logIn, pickOverviewPath } from '../../utils/pathutils';
-import { buttonColorStyle } from "../../theme"
-import { postRegisterData, logFailure, logSuccess }  from "./operations"
+import React from "react";
+import OverviewAppBar from "../components/appbar/OverviewAppBar";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Button, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
+import { Box } from '@mui/system';
+import EditButton from "../components/EditButton"
+import DeleteButton from "../components/DeleteButton"
+import { placeTableHeader } from "../utils/placementutils";
 
-const RegistrationPage = () => {
-  let navigate = useNavigate()
-  const [email, setEmail] = useState('');
-  const [name, setName ] = useState('');
-  const [surname, setSurname] = useState('');
-  const [password, setPassword] = useState('');
-  const [repeatedPassword, setRepeatedPassword] = useState('');
-  let [token, setToken] = useToken();
+const InvertersPage = () => {
+  const handleCreateClick = () => {
+  };
 
-  function handleLogInResponse(responseJson) {
-    if (responseJson.status === 'success') {
-      logSuccess(responseJson);
-      handleSuccess(responseJson);
-    } else {
-      logFailure();
-    }
+  const handleEditClick = (inverterId) => {
+  };
+
+  const handleDeleteClick = async (inverterId) => {
+  };
+
+  function OverviewPageHeaderRow() {
+    return placeTableHeader(
+      "Id", "Code", "Model", "Producer", "User", "Action"
+    )
   }
 
-  function handleSuccess(responseJson) {
-    setToken(responseJson.token);
-    let url = pickOverviewPath(responseJson.role);
-    navigate(url);
-  }
-
-  async function handleRegisterButtonClick(login, password) {
-    // let responseJson = await postRegisterData(login, password);
-    // handleLogInResponse(responseJson);
-  }
-
-  function handleLogInButtonClick() {
-    navigate(logIn);
-  }
-
-
-  function handleEmailTextFieldChange(event) {
-    setEmail(event.target.value);
-  }
-
-
-  function handleNameTextFieldChange(event) {
-    setName(event.target.value);
-  }
-
-
-  function handleSurnameTextFieldChange(event) {
-    setSurname(event.target.value);
-  }
-
-  function handlePasswordTextFieldChange(event) {
-    setPassword(event.target.value);
-  }
-
-  function handleRepeatedPasswordTextFieldChange(event) {
-    setPassword(event.target.value);
-  }
-
-
-
+  let inverters = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
   return (
-    <Container>
-      <SimpleAppBar text="Cookbook" />
-      <Toolbar/>
-      <Box>                           
-        <Grid
-        container
-        spacing={1}>
-          <CentredTextFieldGrid label={"Email"} value={email} onChange={handleEmailTextFieldChange}/>
-          <CentredTextFieldGrid label={"Name"} value={name} onChange={handleNameTextFieldChange}/>
-          <CentredTextFieldGrid label={"Surname"} value={surname} onChange={handleSurnameTextFieldChange}/>
-          <CentredPasswordFieldGrid value={password} onChange={handlePasswordTextFieldChange}/>
-          <CentredPasswordFieldGrid 
-            value={repeatedPassword} 
-            onChange={handleRepeatedPasswordTextFieldChange} 
-            label='Repeated password'
-          />
-          <CentredButtonGrid buttonStyle={buttonColorStyle} onClick={handleRegisterButtonClick} buttonText="Sign up"/>
-          <CenteredFormLabelGrid label="Already a member?"/>
-          <CentredButtonGrid buttonStyle={buttonColorStyle} onClick={handleLogInButtonClick} buttonText="Log in"/>
-        </Grid> 
-      </Box>
-    </Container>
+    <Box marginTop={2} marginX={20}>
+      <OverviewAppBar/>
+      <Button variant="contained" color="primary" onClick={handleCreateClick}>
+        Create new inverter
+      </Button>
+      <Table>
+        <TableHead>
+          
+          <TableRow>
+            <TableCell>Id</TableCell>
+            <TableCell>Code</TableCell>
+            <TableCell>Model</TableCell>
+            <TableCell>Producer</TableCell>
+            <TableCell>User</TableCell>
+            <TableCell>IP Address</TableCell>
+            <TableCell>Action</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {inverters.map((inverter) => (
+            <TableRow key={inverter}>
+              <TableCell>{inverter}</TableCell>
+              <TableCell>{inverter}</TableCell>
+              <TableCell>{inverter}</TableCell>
+              <TableCell>{inverter}</TableCell>
+              <TableCell>{inverter}</TableCell>
+              <TableCell>{inverter}</TableCell>
+              <TableCell>
+                <EditButton onClick={() => handleEditClick(inverter)} />
+                <DeleteButton onClick={() => handleDeleteClick(inverter)} />
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </Box>
   );
-}
-export default RegistrationPage;
+};
+
+export default InvertersPage;
