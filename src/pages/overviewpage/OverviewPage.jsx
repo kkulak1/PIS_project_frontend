@@ -19,7 +19,7 @@ const OverviewPage = () => {
 
   function OverviewPageHeaderRow() {
     return placeTableHeader(
-      "Name", "Du", "Estimated preparation time", "Estimated cost", "User", "Action"
+      "Name", "Description", "Ingredients",  "Estimated preparation time", "Estimated cost",  "Action"
     )
   }
 
@@ -28,7 +28,7 @@ const OverviewPage = () => {
     <Box marginTop={2} marginX={20}>
       <OverviewAppBar/>
       <Button variant="contained" color="primary" onClick={handleCreateClick}>
-        Create new inverter
+        Create new recipe
       </Button>
       <Table>
         <OverviewPageHeaderRow/>
