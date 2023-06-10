@@ -1,7 +1,23 @@
 import { useState } from 'react';
 import OverviewAppBar from "../../components/appbar/OverviewAppBar";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Button, Table, TableBody, TableCell, TableRow, FormControl, InputLabel, Select, MenuItem, Pagination, TableContainer, Paper, TableHead, TablePagination} from '@mui/material';
+import { 
+  Button, 
+  Table, 
+  TableBody, 
+  TableCell, 
+  TableRow, 
+  FormControl, 
+  InputLabel, 
+  Select, 
+  MenuItem, 
+  Pagination, 
+  TableContainer, 
+  Paper, 
+  TableHead, 
+  TablePagination, 
+  TextField
+} from '@mui/material';
 import { Box, margin } from '@mui/system';
 import EditButton from "../../components/EditButton"
 import DeleteButton from "../../components/DeleteButton"
@@ -10,6 +26,7 @@ import { placeTableHeader } from "../../utils/placementutils";
 const OverviewPage = () => {
   const [pagination, setPagination] = useState(10); 
   const [page, setPage] = useState(0);
+  const [searchTerm, setSearchTerm] = useState('');
   const startIndex = page * pagination;
   const endIndex = startIndex + pagination;
   const recipes = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]
@@ -80,6 +97,13 @@ const OverviewPage = () => {
     <Box marginTop={2} marginX={20}>
       <OverviewAppBar/>
       <CreateNewRecipeButton/>
+      <TextField
+        label="Search"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        variant="outlined"
+        size="small"
+      />
       <TableContainer component={Paper}>
         <Table>
           <OverviewPageHeaderRow/>
