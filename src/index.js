@@ -8,7 +8,8 @@ import {
   textRoot, 
   logIn, 
   backendAddress,
-  registration
+  registration,
+  overview
 } from './utils/pathutils'
 import { theme } from './theme'
 
@@ -17,6 +18,7 @@ import LogInPage from './pages/loginpage/LogInPage';
 import RegistrationPage from './pages/registrationpage/RegistrationPage';
 import UserSubjectListPage from './pages/UserSubjectListPage';
 import InvertersPage from './pages/InvertersPage';
+import OverviewPage from './pages/overviewpage/OverviewPage';
 
 
 
@@ -37,6 +39,7 @@ const router = createBrowserRouter(
       routeCreator.createRoute(textRoot, <Navigate to={logIn}/>),
       routeCreator.createRoute(logIn, <LogInPage/>),
       routeCreator.createRoute(registration, <RegistrationPage/>),
+      routeCreator.createRoute(overview, <OverviewPage/>),
       routeCreator.createRoute('/mytest', <UserSubjectListPage/>),
       routeCreator.createRoute('/mytest2', <InvertersPage/>),
     ]
