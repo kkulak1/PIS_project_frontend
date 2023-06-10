@@ -15,6 +15,9 @@ import { theme } from './theme'
 
 import LogInPage from './pages/loginpage/LogInPage';
 import RegistrationPage from './pages/registrationpage/RegistrationPage';
+import UserSubjectListPage from './pages/UserSubjectListPage';
+import InvertersPage from './pages/InvertersPage';
+
 
 
 let routeCreator = new RouteCreator(
@@ -34,6 +37,8 @@ const router = createBrowserRouter(
       routeCreator.createRoute(textRoot, <Navigate to={logIn}/>),
       routeCreator.createRoute(logIn, <LogInPage/>),
       routeCreator.createRoute(registration, <RegistrationPage/>),
+      routeCreator.createRoute('/mytest', <UserSubjectListPage/>),
+      routeCreator.createRoute('/mytest2', <InvertersPage/>),
     ]
   }]
 );
