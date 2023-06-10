@@ -18,7 +18,7 @@ import {
   TablePagination, 
   TextField
 } from '@mui/material';
-import { Box, margin } from '@mui/system';
+import { Box, display, margin } from '@mui/system';
 import EditButton from "../../components/EditButton"
 import DeleteButton from "../../components/DeleteButton"
 import { placeTableHeader } from "../../utils/placementutils";
@@ -93,8 +93,25 @@ const OverviewPage = () => {
   };
 
 
+  const handleSearch = () => {
+
+  }
+
+  function SearchButton({onClick}) {
+    return (
+      <Button 
+        variant="contained" 
+        onClick={onClick} 
+        sx={{display: "inline-block", marginRight: '10px', marginBottom: '10px', marginTop: '10px'}}
+      >
+        Search
+      </Button>
+    )
+  }
+
+
   return (
-    <Box marginTop={2} marginX={20}>
+    <Box  marginTop={2} marginX={20}>
       <OverviewAppBar/>
       <CreateNewRecipeButton/>
       <TextField
@@ -102,8 +119,9 @@ const OverviewPage = () => {
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
         variant="outlined"
-        size="small"
+        sx={{width: "900px", marginRight: '10px'}}
       />
+      <SearchButton onClick={handleSearch}/>
       <TableContainer component={Paper}>
         <Table>
           <OverviewPageHeaderRow/>
