@@ -26,11 +26,15 @@ class Recipe {
   }
 
   get preparationTime() {
-    return this.duration;
+    return this.duration.preparationTime;
   }
 
-  get preparationTime() {
-
+  get estimatedCost() {
+    let totalCost = 0;
+    for (let ingredient of this.ingredients) {
+      totalCost += ingredient.estimatedCost;
+    }
+    return totalCost;
   }
 
 
