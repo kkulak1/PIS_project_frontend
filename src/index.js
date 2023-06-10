@@ -40,8 +40,6 @@ const router = createBrowserRouter(
       routeCreator.createRoute(logIn, <LogInPage/>),
       routeCreator.createRoute(registration, <RegistrationPage/>),
       routeCreator.createRoute(overview, <OverviewPage/>),
-      routeCreator.createRoute('/mytest', <UserSubjectListPage/>),
-      routeCreator.createRoute('/mytest2', <InvertersPage/>),
     ]
   }]
 );
