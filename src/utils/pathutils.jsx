@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom"
 export const backendAddress = 'http://localhost:8080'
 export const logIn = makePath("", "log_in");
 export const registration = makePath("", "registration");
+export const overview = makePath("", "overview");
 
 export const textRoot = "/";
 export function navigateToLogin() {
