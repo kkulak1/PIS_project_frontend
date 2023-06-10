@@ -9,7 +9,7 @@ export default function AppBarLogoutButton({}) {
   return (
     <Button
       style={{ color: '#ff3300' }}
-      onClick={navigate(logIn)}>
+      onClick={() => navigate(logIn)}>
       Log out
     </Button>
   );

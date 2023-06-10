@@ -10,14 +10,14 @@ import AppBarLogoutButton from './buttons/AppBarLogoutButton';
 
 export default function CustomizableAppBar({ children, buttonsData }) {
   let navigate = useNavigate();
-  let [, setToken] = useToken();
-  let buttons = [];
+  // let [, setToken] = useToken();
 
   function handleLogOut() {
-    setToken(null);
+    // setToken(null);
     navigate(logIn);
   }
 
+  let buttons = [];
   for (let appButtonData of buttonsData) {
     buttons.push(
       <AppBarButton appBarButtonData={appButtonData}/>
