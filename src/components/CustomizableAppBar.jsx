@@ -4,29 +4,21 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import useToken from '../hooks/useToken';
 import {logIn} from '../utils/pathutils'
+import AppBarButton from './buttons/AppBarButton';
 
 export default function CustomizableAppBar({ children, buttonsData }) {
   let navigate = useNavigate();
   let [, setToken] = useToken();
   let buttons = [];
 
-  function changePage(url) {
-    navigate(url);
-  }
-
   function handleLogOut() {
     setToken(null);
     navigate(logIn);
   }
 
-  for (let i=0; i < buttonsData.length; i++) {
+  for (let AppButtonData in buttonsData) {
     buttons.push(
-      <Button
-      key={i}
-      color='inherit'
-      onClick={function(){changePage(buttonsData[i].url)}}>
-      {buttonsData[i].name}
-      </Button>
+      <AppBarButton AppButtonData={AppButtonData}/>
     );
   }
   
