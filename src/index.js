@@ -16,8 +16,6 @@ import { theme } from './theme'
 
 import LogInPage from './pages/loginpage/LogInPage';
 import RegistrationPage from './pages/registrationpage/RegistrationPage';
-import UserSubjectListPage from './pages/UserSubjectListPage';
-import InvertersPage from './pages/InvertersPage';
 import OverviewPage from './pages/overviewpage/OverviewPage';
 
 
