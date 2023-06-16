@@ -6,8 +6,8 @@ export async function postLoginData(login, password) {
 const responseJson = await restutils.postJson(
     backendAddress + logIn,
     JSON.stringify({
-    'login': login,
-    'password': password
+      'login': login,
+      'password': password
     })
 )
 return responseJson;

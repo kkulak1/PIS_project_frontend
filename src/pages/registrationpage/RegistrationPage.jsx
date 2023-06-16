@@ -23,7 +23,6 @@ const RegistrationPage = () => {
   const [surname, setSurname] = useState('');
   const [password, setPassword] = useState('');
   const [repeatedPassword, setRepeatedPassword] = useState('');
-  let [token, setToken] = useToken();
 
   function handleLogInResponse(responseJson) {
     if (responseJson.status === 'success') {
@@ -35,14 +34,11 @@ const RegistrationPage = () => {
   }
 
   function handleSuccess(responseJson) {
-    setToken(responseJson.token);
-    let url = pickOverviewPath(responseJson.role);
-    navigate(url);
   }
 
   async function handleRegisterButtonClick(login, password) {
-    // let responseJson = await postRegisterData(login, password);
-    // handleLogInResponse(responseJson);
+    let responseJson = await postRegisterData(login, password);
+    handleLogInResponse(responseJson);
   }
 
   function handleLogInButtonClick() {

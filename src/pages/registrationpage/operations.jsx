@@ -1,16 +1,16 @@
 
 import * as restutils from "../../utils/restutils"
-import { backendAddress, logIn } from "../../utils/pathutils"
+import { backendAddress, logIn, registration } from "../../utils/pathutils"
 
 export async function postRegisterData(login, password) {
-const responseJson = await restutils.postJson(
-    backendAddress + logIn,
-    JSON.stringify({
-    'login': login,
-    'password': password
-    })
-)
-return responseJson;
+  const responseJson = await restutils.postJson(
+      backendAddress + registration,
+      JSON.stringify({
+        'login': login,
+        'password': password
+      })
+  )
+  return responseJson;
 }
 
 
