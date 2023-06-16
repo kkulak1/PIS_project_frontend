@@ -1,22 +1,23 @@
 
 import * as restutils from "../../utils/restutils"
-import { backendAddress, logIn } from "../../utils/pathutils"
+import { backendAddress, logIn, logInBackend } from "../../utils/pathutils"
 
-export async function postLoginData(login, password) {
-const responseJson = await restutils.postJson(
-    backendAddress + logIn,
-    JSON.stringify({
-      'login': login,
-      'password': password
-    })
-)
-return responseJson;
+export async function postLoginData(email, password) {
+  let data = JSON.stringify({
+    'email': email,
+    'password': password
+  })
+  console.log(data);
+  const responseJson = await restutils.post(
+    backendAddress + logInBackend,
+    data
+  )
+  return responseJson;
 }
 
 
 export function logSuccess(responseJson) {
   console.log('Logged in');
-  console.log('Role: ' + responseJson.role);
 }
 
 export function logFailure() {

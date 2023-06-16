@@ -3,30 +3,32 @@ import { Container } from '@mui/system';
 import { Box, Grid, Toolbar } from '@mui/material';
 import { useState } from 'react';
 import useToken from '../../hooks/useToken';
-import { 
+import {
   CenteredFormLabelGrid,
   CentredButtonGrid
 } from  '../../utils/placementutils';
 import CentredTextFieldGrid from '../../components/textfields/CentredTextFieldGrid'
 import CentredPasswordFieldGrid from '../../components/textfields/CentredPasswordFieldGrid'
 import SimpleAppBar from '../../components/appbar/SimpleAppBar';
-import { pickOverviewPath, registration } from '../../utils/pathutils';
+import { overview, pickOverviewPath, registration } from '../../utils/pathutils';
 import { buttonColorStyle } from "../../theme"
 import { postLoginData, logFailure, logSuccess }  from "./operations"
 
 const LogInPage = () => {
   let navigate = useNavigate()
-  const [login, setLogin] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   let [token, setToken] = useToken();
 
   async function handleLogInButtonClick() {
-    let responseJson = await postLoginData(login, password);
+    let responseJson = await postLoginData(email, password);
     handleLogInResponse(responseJson);
   }
 
-  function handleLogInResponse(responseJson) {
-    if (responseJson.status === 'success') {
+  async function handleLogInResponse(response) {
+    console.log(response);
+    if (response.ok) {
+      let responseJson = await response.json();
       logSuccess(responseJson);
       handleSuccess(responseJson);
     } else {
@@ -36,12 +38,11 @@ const LogInPage = () => {
 
   function handleSuccess(responseJson) {
     setToken(responseJson.token);
-    let url = pickOverviewPath(responseJson.role);
-    navigate(url);
+    navigate(overview);
   }
 
   function handleLoginTextFieldChange(event) {
-    setLogin(event.target.value);
+    setEmail(event.target.value);
   }
 
   function handlePasswordTextFieldChange(event) {
@@ -56,16 +57,16 @@ const LogInPage = () => {
     <Container>
       <SimpleAppBar text="Cookbook" />
       <Toolbar/>
-      <Box>                           
+      <Box>
         <Grid
         container
         spacing={1}>
-          <CentredTextFieldGrid label={"Email"} value={login} onChange={handleLoginTextFieldChange}/>
+          <CentredTextFieldGrid label={"Email"} value={email} onChange={handleLoginTextFieldChange}/>
           <CentredPasswordFieldGrid value={password} onChange={handlePasswordTextFieldChange}/>
           <CentredButtonGrid buttonStyle={buttonColorStyle} onClick={handleLogInButtonClick} buttonText="Log in"/>
           <CenteredFormLabelGrid label="Not a member yet?"/>
           <CentredButtonGrid buttonStyle={buttonColorStyle} onClick={handleRegisterButtonClick} buttonText="Sign up"/>
-        </Grid> 
+        </Grid>
       </Box>
     </Container>
   );
