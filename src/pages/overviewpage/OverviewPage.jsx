@@ -18,7 +18,8 @@ import {
   TablePagination, 
   TextField,
   Typography,
-  Slider
+  Slider,
+  Grid
 } from '@mui/material';
 import { Box, display, margin } from '@mui/system';
 import EditButton from "../../components/EditButton"
@@ -154,7 +155,7 @@ const OverviewPage = () => {
         id={"max-price-slider"} 
         maxPrice={maxPrice} 
         onMaxPriceChange={setMaxPrice} 
-        label={`Max price: ${maxPrice}`}
+        label={`Max price: ${maxPrice} zł`}
         maxSliderValue={1000}
       />
     )
@@ -166,7 +167,7 @@ const OverviewPage = () => {
         id={"max-preparation-time-slider"} 
         maxPrice={maxPreparationTime} 
         onMaxPriceChange={setMaxPreparationTime} 
-        label={`Max preparation time: ${maxPreparationTime}`}
+        label={`Max preparation time: ${maxPreparationTime} minutes`}
         maxSliderValue={120}
       />
     )
