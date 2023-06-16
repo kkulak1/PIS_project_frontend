@@ -16,7 +16,9 @@ import {
   Paper, 
   TableHead, 
   TablePagination, 
-  TextField
+  TextField,
+  Typography,
+  Slider
 } from '@mui/material';
 import { Box, display, margin } from '@mui/system';
 import EditButton from "../../components/EditButton"
@@ -27,6 +29,8 @@ const OverviewPage = () => {
   const [pagination, setPagination] = useState(10); 
   const [page, setPage] = useState(0);
   const [searchTerm, setSearchTerm] = useState('');
+  const [maxPrice, setMaxPrice] = useState(500);
+  const [maxPreparationTime, setMaxPreparationTime] = useState(30);
   const startIndex = page * pagination;
   const endIndex = startIndex + pagination;
   const recipes = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]
@@ -109,11 +113,8 @@ const OverviewPage = () => {
     )
   }
 
-
-  return (
-    <Box  marginTop={2} marginX={20}>
-      <OverviewAppBar/>
-      <CreateNewRecipeButton/>
+  function SearchBar() {
+    return (
       <TextField
         label="Search"
         value={searchTerm}
@@ -121,7 +122,64 @@ const OverviewPage = () => {
         variant="outlined"
         sx={{width: "900px", marginRight: '10px'}}
       />
+    )
+  }
+
+  const MaxToZeroSlider = ({ maxSliderValue, maxPrice, onMaxPriceChange, label, id }) => {
+    const handleChange = (event, value) => {
+      onMaxPriceChange(value);
+    };
+
+    return (
+      <div>
+        <Typography id={id} gutterBottom sx={{marginTop: '10px'}}>
+          {label}
+        </Typography>
+        <Slider
+          value={maxPrice}
+          onChange={handleChange}
+          min={0}
+          max={maxSliderValue}
+          step={5}
+          aria-labelledby={id}
+          sx={ { width: "400px", marginRight: '10px', } }
+        />
+      </div>
+    );
+  };
+
+  function MaxPriceSlider() {
+    return (
+      <MaxToZeroSlider 
+        id={"max-price-slider"} 
+        maxPrice={maxPrice} 
+        onMaxPriceChange={setMaxPrice} 
+        label={`Max price: ${maxPrice}`}
+        maxSliderValue={1000}
+      />
+    )
+  }
+  
+  function MaxPreparationTimeSlider() {
+    return (
+      <MaxToZeroSlider 
+        id={"max-preparation-time-slider"} 
+        maxPrice={maxPreparationTime} 
+        onMaxPriceChange={setMaxPreparationTime} 
+        label={`Max preparation time: ${maxPreparationTime}`}
+        maxSliderValue={120}
+      />
+    )
+  }
+
+  return (
+    <Box  marginTop={2} marginX={20}>
+      <OverviewAppBar/>
+      <CreateNewRecipeButton/>
+      <SearchBar/>
       <SearchButton onClick={handleSearch}/>
+      <MaxPriceSlider/>
+      <MaxPreparationTimeSlider/>
       <TableContainer component={Paper}>
         <Table>
           <OverviewPageHeaderRow/>
@@ -152,8 +210,6 @@ const OverviewPage = () => {
         />
       </TableContainer>
       {/* <Pagination count={Math.ceil(recipes.length/pagination)} showFirstButton showLastButton sx={{margin:'px'}}/> */}
-      {/* <PaginationSelector/> */}
-      {/* <MyTable/> */}
     </Box>
   );
 };
