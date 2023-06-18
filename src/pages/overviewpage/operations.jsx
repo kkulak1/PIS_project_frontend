@@ -45,7 +45,9 @@ export async function useRecipeData() {
     backendAddress + getRecipeBackend,
     token
   )
-  return response;
+  if (response.ok) {
+    return await response.json()
+  }
 }
 
 export async function getRecipeDetailsData(recipe, token) {
