@@ -1,6 +1,6 @@
 
 import * as restutils from "../../utils/restutils"
-import { addCostBackend, addIngredientBackend, addQuantityBackend, addRecipeBackend, backendAddress, changeRecipeBackend, changeStepBackend, deleteCostBackend, deleteIngredientBackend, deleteQuantityBackend, deleteRecipeBackend, getRecipeBackend, getRecipeDetailsBackend, logIn, modifyCostBackend, modifyIngredientBackend, modifyQuantityBackend, putRecipeChangeDurationBackend } from "../../utils/pathutils"
+import { addCostBackend, addIngredientBackend, addQuantityBackend, addRecipeBackend, backendAddress, changeRecipeBackend, changeStepBackend, deleteCostBackend, deleteIngredientBackend, deleteQuantityBackend, deleteRecipeBackend, getRecipeBackend, getRecipeDetailsBackend, logIn, modifyCostBackend, modifyIngredientBackend, modifyQuantityBackend, postRecipeAddDurationBackend, putRecipeChangeDurationBackend } from "../../utils/pathutils"
 
 //recipe
 export async function postAddRecipeData(name, description) {
@@ -57,8 +57,21 @@ export async function getRecipeDetailsData(recipe) {
   return response;
 }
 
-//change duration //moze nie dzialac cos
-export async function pusstRecipeChangeDurationData(recipe, newTime) {
+//duration
+export async function postAddDurationData(amountOfTime, unit, recipe) {
+  const response = await restutils.postWithBody(
+    backendAddress + postRecipeAddDurationBackend,
+    token,
+    JSON.stringify({
+      'amountOfTime': amountOfTime,
+      'unit': unit,
+      'recipe': recipe
+    })
+  )
+  return response;
+}
+
+export async function putRecipeChangeDurationData(recipe, newTime) {
   const response = await restutils.putWithBody(
     backendAddress + putRecipeChangeDurationBackend,
     token,

@@ -18,6 +18,7 @@ export const deleteRecipeBackend = '/api/v1/recipe/delete';
 export const getRecipeBackend = '/api/v1/recipe/get';
 export const getRecipeDetailsBackend = '/api/v1/recipe/get-details';
 
+export const postRecipeAddDurationBackend = '/api/v1/recipe/add-duration';
 export const putRecipeChangeDurationBackend = '/api/v1/recipe/change-duration';
 
 export const changeStepBackend = '/api/v1/step/change-steps';
