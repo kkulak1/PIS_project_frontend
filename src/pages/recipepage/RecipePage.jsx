@@ -29,6 +29,8 @@ import { ArrowUpward, ArrowDownward } from '@mui/icons-material';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { List, ListItem, ListItemText } from '@mui/material';
 import EditButton from '../../components/EditButton'
+import ReturnButton from '../../components/ReturnButton';
+import { useNavigate } from 'react-router-dom';
 
 
 const RecipePage = () => {
@@ -42,6 +44,7 @@ const RecipePage = () => {
   ]);
   const [recipe, setRecipe] = useState('Placeholder')
   let ingredients = [1,2,3,4]
+  const navigate = useNavigate()
 
   const handleCreateClick = () => {
   };
@@ -192,6 +195,7 @@ return (
   return (
     <Box  marginTop={2} marginX={20}>
       <OverviewAppBar/>
+      <ReturnButton onClick={() => navigate(-1)}/>
       <Typography
         variant='h1' sx={{margin: '10px'}}>
         Recipe Name
