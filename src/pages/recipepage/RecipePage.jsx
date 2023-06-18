@@ -55,12 +55,6 @@ const RecipePage = () => {
   const handleDeleteClick = async (inverterId) => {
   };
 
-  // function RecipeInfoHeaderRow() {
-  //   return placeTableHeader(
-  //     "Name", "Description", "Ingredients",  "Estimated preparation time", "Estimated cost",  ""
-  //   )
-  // }
-
   function StepsHeaderRow() {
     return placeTableHeader(
       "Name", "Description", "Ingredients",  "Estimated preparation time", "Estimated cost",  ""

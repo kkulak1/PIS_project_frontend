@@ -1,9 +1,10 @@
 
 import * as restutils from "../../utils/restutils"
 import { addCostBackend, addIngredientBackend, addQuantityBackend, addRecipeBackend, backendAddress, changeRecipeBackend, changeStepBackend, deleteCostBackend, deleteIngredientBackend, deleteQuantityBackend, deleteRecipeBackend, getRecipeBackend, getRecipeDetailsBackend, logIn, modifyCostBackend, modifyIngredientBackend, modifyQuantityBackend, postRecipeAddDurationBackend, putRecipeChangeDurationBackend } from "../../utils/pathutils"
+import useToken from "../../hooks/useToken";
 
 //recipe
-export async function postAddRecipeData(name, description) {
+export async function postAddRecipeData(name, description, token) {
   const response = await restutils.postWithBody(
     backendAddress + addRecipeBackend,
     token,
@@ -15,19 +16,19 @@ export async function postAddRecipeData(name, description) {
   return response;
 }
 
-export async function postRecipeChangeNameData(recipeId, newName) {
+export async function postRecipeChangeNameData(recipeId, newName, token) {
   const response = await restutils.postWithBody(
     backendAddress + changeRecipeBackend,
     token,
     JSON.stringify({
       'recipeId': recipeId,
-      'description': description
+      'newName': newName
     })
   )
   return response;
 }
 
-export async function deleteRecipeData(id) {
+export async function deleteRecipeData(id, token) {
   const response = await restutils.deleteWithBody(
     backendAddress + deleteRecipeBackend,
     token,
@@ -38,7 +39,8 @@ export async function deleteRecipeData(id) {
   return response;
 }
 
-export async function getRecipeData() {
+export async function useRecipeData() {
+  const [token, setToken] = useToken()
   const response = await restutils.get(
     backendAddress + getRecipeBackend,
     token
@@ -46,7 +48,7 @@ export async function getRecipeData() {
   return response;
 }
 
-export async function getRecipeDetailsData(recipe) {
+export async function getRecipeDetailsData(recipe, token) {
   const response = await restutils.getWithBody(
     backendAddress + getRecipeDetailsBackend,
     token,
@@ -57,8 +59,22 @@ export async function getRecipeDetailsData(recipe) {
   return response;
 }
 
+
+export async function getRecipeDetailsById(recipeId, token) {
+  const response = await restutils.getWithBody(
+    backendAddress + getRecipeDetailsBackend,
+    token,
+    JSON.stringify({
+      id: recipeId    
+    })
+  )
+  return response;
+}
+
+
+
 //duration
-export async function postAddDurationData(amountOfTime, unit, recipe) {
+export async function postAddDurationData(amountOfTime, unit, recipe, token) {
   const response = await restutils.postWithBody(
     backendAddress + postRecipeAddDurationBackend,
     token,
@@ -71,7 +87,7 @@ export async function postAddDurationData(amountOfTime, unit, recipe) {
   return response;
 }
 
-export async function putRecipeChangeDurationData(recipe, newTime) {
+export async function putRecipeChangeDurationData(recipe, newTime, token) {
   const response = await restutils.putWithBody(
     backendAddress + putRecipeChangeDurationBackend,
     token,
@@ -84,7 +100,7 @@ export async function putRecipeChangeDurationData(recipe, newTime) {
 }
 
 //step
-export async function putStepChangeData(recipe, steps) {
+export async function putStepChangeData(recipe, steps, token) {
   const response = await restutils.putWithBody(
     backendAddress + changeStepBackend,
     token,
@@ -97,7 +113,7 @@ export async function putStepChangeData(recipe, steps) {
 }
 
 //quantity
-export async function addQuantityData(value, unit, ingredient) {
+export async function addQuantityData(value, unit, ingredient, token) {
   const response = await restutils.postWithBody(
     backendAddress + addQuantityBackend,
     token,
@@ -110,7 +126,7 @@ export async function addQuantityData(value, unit, ingredient) {
   return response;
 }
 
-export async function deleteQuantityData(quantity) {
+export async function deleteQuantityData(quantity, token) {
   const response = await restutils.deleteWithBody(
     backendAddress + deleteQuantityBackend,
     token,
@@ -121,7 +137,7 @@ export async function deleteQuantityData(quantity) {
   return response;
 }
 
-export async function modifyQuantityData(quantity) {
+export async function modifyQuantityData(quantity, token) {
   const response = await restutils.putWithBody(
     backendAddress + modifyQuantityBackend,
     token,
@@ -133,7 +149,7 @@ export async function modifyQuantityData(quantity) {
 }
 
 //ingredient
-export async function addIngredientData(recipe, type, name, description) {
+export async function addIngredientData(recipe, type, name, description, token) {
   const response = await restutils.postWithBody(
     backendAddress + addIngredientBackend,
     token,
@@ -147,7 +163,7 @@ export async function addIngredientData(recipe, type, name, description) {
   return response;
 }
 
-export async function deleteIngredientData(id) {
+export async function deleteIngredientData(id, token) {
   const response = await restutils.deleteWithBody(
     backendAddress + deleteIngredientBackend,
     token,
@@ -158,7 +174,7 @@ export async function deleteIngredientData(id) {
   return response;
 }
 
-export async function modifyIngredientData(id, type, name, description) {
+export async function modifyIngredientData(id, type, name, description, token) {
   const response = await restutils.putWithBody(
     backendAddress + modifyIngredientBackend,
     token,
@@ -173,7 +189,7 @@ export async function modifyIngredientData(id, type, name, description) {
 }
 
 //cost
-export async function addCostData(ingredient, value, unit) {
+export async function addCostData(ingredient, value, unit, token) {
   const response = await restutils.postWithBody(
     backendAddress + addCostBackend,
     token,
@@ -186,7 +202,7 @@ export async function addCostData(ingredient, value, unit) {
   return response;
 }
 
-export async function deleteCostData(cost) {
+export async function deleteCostData(cost, token) {
   const response = await restutils.deleteWithBody(
     backendAddress + deleteCostBackend,
     token,
@@ -197,7 +213,7 @@ export async function deleteCostData(cost) {
   return response;
 }
 
-export async function modifyCostData(cost) {
+export async function modifyCostData(cost, token) {
   const response = await restutils.putWithBody(
     backendAddress + modifyCostBackend,
     token,

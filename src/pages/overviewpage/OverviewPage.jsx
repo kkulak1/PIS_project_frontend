@@ -24,6 +24,7 @@ import {
 import { Box, display, margin } from '@mui/system';
 import MoreButton from "../../components/MoreButton"
 import { placeTableHeader } from "../../utils/placementutils";
+import { useRecipeData } from './operations';
 
 const OverviewPage = () => {
   const [pagination, setPagination] = useState(10); 
@@ -33,7 +34,7 @@ const OverviewPage = () => {
   const [maxPreparationTime, setMaxPreparationTime] = useState(30);
   const startIndex = page * pagination;
   const endIndex = startIndex + pagination;
-  const recipes = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]
+  const recipes = useRecipeData()
   const currentPageRows = recipes.slice(startIndex, endIndex);
 
 
