@@ -5,13 +5,8 @@ const ReturnButton = ({ onClick }) => {
   return (
     <Button
     variant="contained"
-    color="primary"
+    color="inherit"
     sx={{
-      color: 'blue',
-      '&:hover': {
-        color: 'white',
-        backgroundColor: 'blue',
-      },
       margin: '10px',
     }}
     onClick={onClick}>

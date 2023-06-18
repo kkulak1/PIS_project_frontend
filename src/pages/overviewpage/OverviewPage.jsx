@@ -22,8 +22,7 @@ import {
   Grid
 } from '@mui/material';
 import { Box, display, margin } from '@mui/system';
-import EditButton from "../../components/EditButton"
-import DeleteButton from "../../components/DeleteButton"
+import MoreButton from "../../components/MoreButton"
 import { placeTableHeader } from "../../utils/placementutils";
 
 const OverviewPage = () => {
@@ -41,7 +40,7 @@ const OverviewPage = () => {
   const handleCreateClick = () => {
   };
 
-  const handleEditClick = (inverterId) => {
+  const handleMoreClick = (inverterId) => {
   };
 
   const handleDeleteClick = async (inverterId) => {
@@ -49,7 +48,7 @@ const OverviewPage = () => {
 
   function OverviewPageHeaderRow() {
     return placeTableHeader(
-      "Name", "Description", "Ingredients",  "Estimated preparation time", "Estimated cost",  "Action"
+      "Name", "Description", "Ingredients",  "Estimated preparation time", "Estimated cost",  ""
     )
   }
 
@@ -193,8 +192,7 @@ const OverviewPage = () => {
                 <TableCell>{recipe}</TableCell>
                 <TableCell>{recipe}</TableCell>
                 <TableCell>
-                  <EditButton onClick={() => handleEditClick(recipe)} />
-                  <DeleteButton onClick={() => handleDeleteClick(recipe)} />
+                  <MoreButton onClick={() => handleMoreClick(recipe)}/>
                 </TableCell>
               </TableRow>
             ))}

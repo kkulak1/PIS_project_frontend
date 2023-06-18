@@ -9,7 +9,8 @@ import {
   logIn, 
   backendAddress,
   registration,
-  overview
+  overview,
+  recipe
 } from './utils/pathutils'
 import { theme } from './theme'
 
@@ -17,6 +18,7 @@ import { theme } from './theme'
 import LogInPage from './pages/loginpage/LogInPage';
 import RegistrationPage from './pages/registrationpage/RegistrationPage';
 import OverviewPage from './pages/overviewpage/OverviewPage';
+import RecipePage from './pages/recipepage/RecipePage';
 
 
 
@@ -38,6 +40,7 @@ const router = createBrowserRouter(
       routeCreator.createRoute(logIn, <LogInPage/>),
       routeCreator.createRoute(registration, <RegistrationPage/>),
       routeCreator.createRoute(overview, <OverviewPage/>),
+      routeCreator.createRoute(recipe, <RecipePage/>),
     ]
   }]
 );
