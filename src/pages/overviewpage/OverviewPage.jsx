@@ -25,6 +25,8 @@ import { Box, display, margin } from '@mui/system';
 import MoreButton from "../../components/MoreButton"
 import { placeTableHeader } from "../../utils/placementutils";
 import { useRecipeData } from './operations';
+import useToken from "../../hooks/useToken";
+
 
 const OverviewPage = () => {
   const [pagination, setPagination] = useState(10); 
@@ -32,9 +34,10 @@ const OverviewPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [maxPrice, setMaxPrice] = useState(500);
   const [maxPreparationTime, setMaxPreparationTime] = useState(30);
+  const [token, setToken] = useToken()
   const startIndex = page * pagination;
   const endIndex = startIndex + pagination;
-  const recipes = useRecipeData()
+  const recipes = [1]
   const currentPageRows = recipes.slice(startIndex, endIndex);
 
 

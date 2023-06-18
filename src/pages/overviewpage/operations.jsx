@@ -1,7 +1,6 @@
 
 import * as restutils from "../../utils/restutils"
 import { addCostBackend, addIngredientBackend, addQuantityBackend, addRecipeBackend, backendAddress, changeRecipeBackend, changeStepBackend, deleteCostBackend, deleteIngredientBackend, deleteQuantityBackend, deleteRecipeBackend, getRecipeBackend, getRecipeDetailsBackend, logIn, modifyCostBackend, modifyIngredientBackend, modifyQuantityBackend, postRecipeAddDurationBackend, putRecipeChangeDurationBackend } from "../../utils/pathutils"
-import useToken from "../../hooks/useToken";
 
 //recipe
 export async function postAddRecipeData(name, description, token) {
@@ -39,8 +38,7 @@ export async function deleteRecipeData(id, token) {
   return response;
 }
 
-export async function useRecipeData() {
-  const [token, setToken] = useToken()
+export async function useRecipeData(token) {
   const response = await restutils.get(
     backendAddress + getRecipeBackend,
     token
